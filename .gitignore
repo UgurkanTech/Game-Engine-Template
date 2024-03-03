@@ -1,0 +1,18 @@
+# Ignore build artifacts
+build/
+bin/
+lib/
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+CMakeLists.txt.user
+cmake_install.cmake
+install_manifest.txt
+
+# Ignore compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
