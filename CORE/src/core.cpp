@@ -7,6 +7,11 @@ int Exec(){
     if (!glfwInit())
         return -1;
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
     // Create a windowed mode window and its OpenGL context
     GLFWwindow* window = glfwCreateWindow(800, 600, "CLUA Window", NULL, NULL);
     if (!window)
@@ -14,6 +19,7 @@ int Exec(){
         glfwTerminate();
         return -1;
     }
+
 
     // Make the window's context current
     glfwMakeContextCurrent(window);
@@ -58,7 +64,7 @@ int Exec(){
 
     // Setup ImGui Platform and Renderer bindings
     ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init("#version 130");
+    ImGui_ImplOpenGL3_Init("#version 330");
 
 
     double lastTime = glfwGetTime();

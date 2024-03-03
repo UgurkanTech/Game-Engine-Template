@@ -1,8 +1,12 @@
 // In core.h
-#ifdef BUILDING_CORE
-#define CORE_API __declspec(dllexport)
+#ifdef _WIN32
+    #ifdef BUILDING_CORE
+        #define CORE_API __declspec(dllexport)
+    #else
+        #define CORE_API __declspec(dllimport)
+    #endif
 #else
-#define CORE_API __declspec(dllimport)
+    #define CORE_API
 #endif
 
 #include <GLFW/glfw3.h>
