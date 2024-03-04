@@ -33,7 +33,9 @@ int Exec(){
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-    
+#ifdef __linux__
+    io.ConfigViewportsNoDecoration = false; // glfw has mouse position bug on linux..
+#endif
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     // Add full set of Unicode BMP characters
