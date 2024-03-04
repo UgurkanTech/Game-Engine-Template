@@ -17,6 +17,7 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE INTERNAL "Build the GLFW example programs")
 set(GLFW_BUILD_TESTS OFF CACHE INTERNAL "Build the GLFW test programs")
 set(GLFW_BUILD_DOCS OFF CACHE INTERNAL "Build the GLFW documentation")
 set(GLFW_INSTALL OFF CACHE INTERNAL "Generate installation target")
+set(GLFW_BUILD_WAYLAND OFF CACHE BOOL "Build the Wayland platform") #required for linux
 add_subdirectory(submodules/glfw)
 
 set(IMGUI_PATH ${CMAKE_CURRENT_LIST_DIR}/submodules/imgui)
@@ -46,8 +47,8 @@ target_link_libraries("imgui" PRIVATE glfw)
 # Find the OpenGL package
 find_package(OpenGL REQUIRED)
 
-if(APPLE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fPIC")
 elseif(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -static-libgcc -static-libstdc++ -static")
 endif()
@@ -60,7 +61,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources/ DESTINATION ${CMAKE_BINARY_DIR}
 
 
 # Create Core as a shared library
-file(GLOB CORE_SRC "./Core/src/*.cpp")
+file(GLOB CORE_SRC "./CORE/src/*.cpp")
 add_library(Core SHARED ${CORE_SRC})
 
 # Change output name
@@ -75,7 +76,7 @@ target_include_directories(Core PUBLIC imgui submodules/glfw/include)
 target_compile_definitions(Core PRIVATE BUILDING_CORE)
 
 # Create Editor executable
-file(GLOB EDITOR_SRC "./Editor/src/*.cpp")
+file(GLOB EDITOR_SRC "./EDITOR/src/*.cpp")
 add_executable(Editor ${EDITOR_SRC} "./app.rc")
 # Change output name
 set_target_properties(Editor PROPERTIES OUTPUT_NAME Editor)
@@ -83,7 +84,7 @@ target_link_libraries(Editor Core)
 target_include_directories(Editor PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/CORE/src)
 
 # Create Runtime executable
-file(GLOB RUNTIME_SRC "./Runtime/src/*.cpp")
+file(GLOB RUNTIME_SRC "./RUNTIME/src/*.cpp")
 add_executable(Runtime ${RUNTIME_SRC} "./app.rc")
 set_target_properties(Runtime PROPERTIES OUTPUT_NAME Runtime)
 target_link_libraries(Runtime Core)
