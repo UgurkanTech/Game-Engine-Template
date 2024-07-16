@@ -1,5 +1,14 @@
-C++ OpenGL Game Engine Template with CMake, ImGUI and GLFW.
+# C++ OpenGL Game Engine Template with CMake, ImGUI, and GLFW
 
-An easy way to start a game engine project using C++. It is cross-platform.
+Welcome! This template provides a robust starting point for developing your own game engine in C++. It integrates essential libraries such as OpenGL for rendering, ImGUI for immediate mode graphical user interface, and GLFW for managing windows and input across different platforms.
 
-Created by -Uğurkan Hoşgör
+Key Features:
+- Cross-Platform Compatibility: Designed to run seamlessly on Windows, macOS, and Linux, ensuring broad accessibility for developers.
+
+- CMake Build System: Utilizes CMake for streamlined configuration and building, facilitating easy setup on various development environments.
+
+- OpenGL Support: Harnesses the power of OpenGL for high-performance 3D rendering, enabling visually stunning graphics in your applications.
+
+- ImGUI Integration: Includes ImGUI for rapid development of in-game debugging tools and graphical interfaces, enhancing developer productivity.
+
+- GLFW for Window Management: Manages windows, OpenGL contexts, and input handling, simplifying the process of creating cross-platform applications.
