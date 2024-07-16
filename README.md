@@ -2,6 +2,8 @@
 
 Welcome! This template provides a robust starting point for developing your own game engine in C++. It integrates essential libraries such as OpenGL for rendering, ImGUI for immediate mode graphical user interface, and GLFW for managing windows and input across different platforms.
 
+The Code Editor and Runtime projects utilize the Core Library for essential functionalities and shared utilities.
+
 Key Features:
 - Cross-Platform Compatibility: Designed to run seamlessly on Windows, macOS, and Linux, ensuring broad accessibility for developers.
 
